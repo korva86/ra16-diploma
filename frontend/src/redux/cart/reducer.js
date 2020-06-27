@@ -1,10 +1,12 @@
+import {ALERT_HIDE} from "../alert/types";
 import {
-    ADD_TO_CART, ALERT_HIDE, CART_ORDER_FAILURE,
+    ADD_TO_CART,
+    CART_ORDER_FAILURE,
     CART_ORDER_REQUEST,
     CART_ORDER_SUCCESS,
     CHANGE_CART_OWNER,
     DELETE_FROM_CART
-} from "../actions/actionTypes";
+} from "./types";
 
 const initialState = {
     items: [],

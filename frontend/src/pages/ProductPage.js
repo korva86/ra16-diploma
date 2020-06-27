@@ -3,16 +3,20 @@ import {useParams, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
 
 import Banner from "../components/Banner";
-import {addToCart, alertShow, catalogItemRequest} from "../redux/actions/actionCreators";
 import Preloader from "../components/Preloader";
 import Product from "../utils/Product";
 import Alert from "../components/Alert";
+import {alertShow} from "../redux/alert/actions";
+import {addToCart} from "../redux/cart/actions";
+import {catalogItemRequest} from "../redux/catalogItem/actions";
+import {catalogItemSelector} from "../redux/catalogItem/selectors";
+import noImg from "../img/no_photo.jpg";
 
 const ProductPage = () => {
     const {id} = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
-    const {item, loading, error} = useSelector(state => state.catalogItem);
+    const {item, loading, error} = useSelector(catalogItemSelector);
 
     useEffect(() => {
         dispatch(catalogItemRequest(id))
@@ -67,7 +71,12 @@ const ProductPage = () => {
                         <div className="row">
                             <div className="col-5">
                                 <img src={images ? images[0] : ''}
-                                     className="img-fluid" alt={title || ''}/>
+                                     className="img-fluid" alt={title || ''}
+                                     onError={(e) => {
+                                         e.target.onerror = null;
+                                         e.target.src = `${noImg}`;
+                                     }}
+                                />
                             </div>
                             <div className="col-7">
                                 <table className="table table-bordered">

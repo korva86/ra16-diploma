@@ -1,7 +1,7 @@
 import { retry, put, takeEvery} from 'redux-saga/effects';
-import {fetchCatalogItem} from "../api";
-import {catalogItemError, catalogItemSuccess} from "../actions/actionCreators";
-import {CATALOG_ITEM_REQUEST} from "../actions/actionTypes";
+import {fetchCatalogItem} from "../api.js";
+import {CATALOG_ITEM_REQUEST} from "./types";
+import {catalogItemError, catalogItemSuccess} from "./actions";
 
 function* handleFetchCatalogItem(action) {
     try {

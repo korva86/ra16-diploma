@@ -1,19 +1,17 @@
 import { retry, put, takeEvery, takeLatest } from 'redux-saga/effects';
-import {fetchCatalogList, fetchCategories} from "../api";
-import {
-    catalogSearchFailure,
-    catalogSearchSuccess,
-    fetchCatalogError,
-    fetchCatalogSuccess,
-    fetchCategoriesError,
-    fetchCategoriesSuccess, fetchMoreCatalogError, fetchMoreCatalogSuccess
-} from "../actions/actionCreators";
+import {fetchCatalogList, fetchCategories} from "../api.js";
 import {
     CATALOG_SEARCH_REQUEST,
     FETCH_CATALOG_REQUEST,
     FETCH_CATEGORIES_REQUEST,
     FETCH_MORE_CATALOG_REQUEST
-} from "../actions/actionTypes";
+} from "./types";
+import {
+    catalogSearchFailure,
+    catalogSearchSuccess, fetchCatalogError, fetchCatalogSuccess, fetchCategoriesError, fetchCategoriesSuccess,
+    fetchMoreCatalogError,
+    fetchMoreCatalogSuccess
+} from "./actions";
 
 function* handleFetchCatalog(action) {
     try {

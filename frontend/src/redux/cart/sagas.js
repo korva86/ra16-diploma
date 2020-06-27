@@ -1,7 +1,7 @@
 import { retry, put, takeLatest} from 'redux-saga/effects';
-import {sendOrder} from "../api";
-import {cartOrderError, cartOrderSuccess} from "../actions/actionCreators";
-import {CART_ORDER_REQUEST} from "../actions/actionTypes";
+import {sendOrder} from "../api.js";
+import {CART_ORDER_REQUEST} from "./types";
+import {cartOrderError, cartOrderSuccess} from "./actions";
 
 function* handleCartOrder(action) {
     try {

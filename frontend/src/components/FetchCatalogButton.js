@@ -1,9 +1,10 @@
 import React from 'react';
 import {useSelector, useDispatch} from "react-redux";
-import {fetchMoreCatalogRequest} from "../redux/actions/actionCreators";
+import {fetchMoreCatalogRequest} from "../redux/catalogList/actions";
+import {catalogSelector} from "../redux/catalogList/selectors";
 
 const FetchCatalogButton = () => {
-    const {selectedCategory, offset, loadingMore, fullFetched, search} = useSelector(state => state.catalog);
+    const {selectedCategory, offset, loadingMore, fullFetched, search} = useSelector(catalogSelector);
     const dispatch = useDispatch();
     if (loadingMore) {
         return (

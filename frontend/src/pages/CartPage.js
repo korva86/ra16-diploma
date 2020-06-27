@@ -4,18 +4,15 @@ import {useDispatch, useSelector} from "react-redux";
 
 import Banner from "../components/Banner";
 import Preloader from "../components/Preloader";
-import {
-    addToCart,
-    alertShow,
-    cartOrderRequest,
-    deleteFromCart,
-    handleChangeCartOwner
-} from "../redux/actions/actionCreators";
 import Alert from "../components/Alert";
+import {localStorageUpdateItems} from "../utils/Product";
+import {alertShow} from "../redux/alert/actions";
+import {cartOrderRequest, deleteFromCart, handleChangeCartOwner} from "../redux/cart/actions";
+import {cartSelector} from "../redux/cart/selectors";
 
 const CartPage = () => {
     const dispatch = useDispatch();
-    const {items, loading, owner, success, error} = useSelector(state => state.cart);
+    const {items, loading, owner, success, error} = useSelector(cartSelector);
     const totalPrice = items.reduce((sum, item) => {
         return sum + item.price * item.count
     }, 0);
@@ -32,15 +29,7 @@ const CartPage = () => {
     };
 
     useEffect(() => {
-        if(items.length) {
-            localStorage.setItem('cartProduct', JSON.stringify(items));
-        }
-        if(!items.length) {
-            const data = JSON.parse(localStorage.getItem('cartProduct'));
-            if(data && data.length) {
-                dispatch(addToCart(data));
-            }
-        }
+        localStorageUpdateItems(items, dispatch)
     }, [items]);
 
     useEffect(() => {

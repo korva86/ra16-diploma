@@ -1,9 +1,5 @@
-import {
-    ALERT_HIDE,
-    TOP_SALES_FAILURE,
-    TOP_SALES_REQUEST,
-    TOP_SALES_SUCCESS
-} from "../actions/actionTypes";
+import {ALERT_HIDE} from "../alert/types";
+import {TOP_SALES_FAILURE, TOP_SALES_REQUEST, TOP_SALES_SUCCESS} from "./types";
 
 const initialState = {
     sales: [],

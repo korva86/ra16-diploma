@@ -2,14 +2,15 @@ import React, {useState, useCallback} from 'react';
 import {NavLink, Link, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
 import headerLogo from '../img/header-logo.png'
-import {changeSearchCatalog} from "../redux/actions/actionCreators";
+import {changeSearchCatalog} from "../redux/catalogList/actions";
+import {cartSelector} from "../redux/cart/selectors";
 
 const Header = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [visibleSearchForm, setVisibleSearchForm] = useState(true);
     const [searchValue, setSearchValue] = useState('');
-    const {items} = useSelector(state => state.cart);
+    const {items} = useSelector(cartSelector);
 
     const handleChangeSearch = (e) => {
         setSearchValue(e.target.value)

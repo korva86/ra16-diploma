@@ -1,9 +1,5 @@
-import {
-    ALERT_HIDE,
-    CATALOG_ITEM_FAILURE,
-    CATALOG_ITEM_REQUEST,
-    CATALOG_ITEM_SUCCESS,
-} from "../actions/actionTypes";
+import {ALERT_HIDE} from "../alert/types";
+import {CATALOG_ITEM_FAILURE, CATALOG_ITEM_REQUEST, CATALOG_ITEM_SUCCESS} from "./types";
 
 const initialState = {
     item: {},

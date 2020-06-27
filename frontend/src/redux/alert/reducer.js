@@ -1,4 +1,4 @@
-import {ALERT_HIDE, ALERT_SHOW} from "../actions/actionTypes";
+import {ALERT_HIDE, ALERT_SHOW} from "./types";
 
 const initialState = {
     text: null,

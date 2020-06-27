@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import {alertShow, topSalesRequest} from "../redux/actions/actionCreators";
 import CatalogCard from "./CatalogCard";
 import Preloader from "./Preloader";
+import {alertShow} from "../redux/alert/actions";
+import {topSalesRequest} from "../redux/topSales/actions";
+import {topSalesSelector} from "../redux/topSales/selectors";
 
 const TopSales = () => {
-    const {sales, loading, error} = useSelector((state) => state.topSales);
+    const {sales, loading, error} = useSelector(topSalesSelector);
     const dispatch = useDispatch();
 
     useEffect(() => {

@@ -1,10 +1,7 @@
 import { retry, put, takeEvery} from 'redux-saga/effects';
-import {fetchTopSales} from "../api";
-import {
-    topSalesError,
-    topSalesSuccess
-} from "../actions/actionCreators";
-import {TOP_SALES_REQUEST} from "../actions/actionTypes";
+import {fetchTopSales} from "../api.js";
+import {TOP_SALES_REQUEST} from "./types";
+import {topSalesError, topSalesSuccess} from "./actions";
 
 function* handleFetchTopSales() {
     try {

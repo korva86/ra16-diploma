@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import {useLocation, Link} from 'react-router-dom'
-import {
-    alertShow,
-    catalogSearchRequest,
-    changeSearchCatalog,
-    fetchCatalogRequest,
-    fetchCategoriesRequest, selectCatalogCategory,
-} from "../redux/actions/actionCreators";
 import Preloader from "./Preloader";
 import CatalogCard from "./CatalogCard";
 import FetchCatalogButton from "./FetchCatalogButton";
+import {alertShow} from "../redux/alert/actions";
+import {
+    catalogSearchRequest,
+    changeSearchCatalog, fetchCatalogRequest,
+    fetchCategoriesRequest,
+    selectCatalogCategory
+} from "../redux/catalogList/actions";
+import {catalogSelector} from "../redux/catalogList/selectors";
 
 const Catalog = () => {
-    const {items, categories, selectedCategory, loading, search, error} = useSelector(state => state.catalog);
+    const {items, categories, selectedCategory, loading, search, error} = useSelector(catalogSelector);
     const dispatch = useDispatch();
     const newCategories = [{
         id: 0,

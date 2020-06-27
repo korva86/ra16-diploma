@@ -15,6 +15,9 @@ export async function fetchCatalogList(id, offset, search) {
 export async function fetchCatalogItem(id) {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/items/${id}`);
     if (!response.ok) {
+        if (response.status === 404) {
+            document.location.href = '/404'
+        }
         throw new Error(response.statusText)
     }
     return await response.json()

@@ -1,9 +1,10 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {alertHide} from "../redux/actions/actionCreators";
+import {alertHide} from "../redux/alert/actions";
+import {alertSelector} from "../redux/alert/selectors";
 
 const Alert = () => {
-    const {visible, type, text} = useSelector(state => state.alert);
+    const {visible, type, text} = useSelector(alertSelector);
     const dispatch = useDispatch();
     if (!visible) {
         return null

@@ -1,0 +1,1 @@
+export const topSalesSelector = state => state.topSales;
