@@ -31,7 +31,7 @@ export default function catalogListReducer(state = initialState, action) {
     switch (action.type) {
         case FETCH_CATALOG_REQUEST:
         case CATALOG_SEARCH_REQUEST:
-            return {...state, loading: true, error: null};
+            return {...state, loading: true, error: null, items: []};
         case FETCH_CATEGORIES_REQUEST:
             return {...state, loading: true, error: null, selectedCategory: 0,};
         case FETCH_CATEGORIES_FAILURE:
