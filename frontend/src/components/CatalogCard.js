@@ -4,8 +4,8 @@ import noImg from '../img/no_photo.jpg'
 
 const CatalogCard = ({item}) => {
     return (
-        <div className="col-4">
-            <div className="card catalog-item-card">
+        <div className="col-lg-4 d-flex align-items-stretch">
+            <div className="card catalog-item-card flex-fill">
                 <img
                     src={item.images[0]}
                     className="card-img-top img-fluid" alt={item.title}

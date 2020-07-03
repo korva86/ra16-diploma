@@ -1,17 +1,15 @@
-import { all, } from 'redux-saga/effects';
-import {watchFetchCatalog, watchFetchCategories, watchFetchMoreCatalog, watchSearchCatalog} from "./catalogList/sagas";
-import {watchFetchTopSales} from "./topSales/sagas";
-import {watchFetchCatalogItem} from "./catalogItem/sagas";
-import {watchCartOrder} from "./cart/sagas";
+import { all, fork } from 'redux-saga/effects';
+import * as catalogListSagas from "./catalogList/sagas";
+import * as topSalesSagas from "./topSales/sagas";
+import * as catalogItemSagas from "./catalogItem/sagas";
+import * as cartItemSagas from "./cart/sagas";
 
 export default function* rootSaga() {
-    yield all([
-        watchFetchCatalog(),
-        watchFetchCategories(),
-        watchFetchMoreCatalog(),
-        watchFetchTopSales(),
-        watchSearchCatalog(),
-        watchFetchCatalogItem(),
-        watchCartOrder()
-    ])
+    yield all(
+        [...Object.values(catalogListSagas),
+        ...Object.values(topSalesSagas),
+        ...Object.values(catalogItemSagas),
+        ...Object.values(cartItemSagas)
+        ].map(fork)
+    )
 }
